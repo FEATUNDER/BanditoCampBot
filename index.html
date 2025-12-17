@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Каталог одежды</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Подключаем стили -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Подключаем скрипт Telegram Web App SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🎽 Наш каталог</h1>
+        <p>Выбери вещь и размер, оставь контакт для связи.</p>
+
+        <div class="product" data-item="Футболка Oversize" data-base-price="1500">
+            <h2>Футболка Oversize</h2>
+            <img src="https://via.placeholder.com/300x300/FFB6C1/000000?text=T-Shirt" alt="Футболка">
+            <p class="description">Хлопковая, цвет: розовый</p>
+
+            <div class="size-selector">
+                <label>Размер:</label>
+                <button class="size-btn" data-price-mod="0" data-size="S">S (+0₽)</button>
+                <button class="size-btn active" data-price-mod="0" data-size="M">M (+0₽)</button>
+                <button class="size-btn" data-price-mod="300" data-size="L">L (+300₽)</button>
+            </div>
+
+            <p class="price">Цена: <span id="price1">1500</span>₽</p>
+        </div>
+
+        <div class="product" data-item="Худи с капюшоном" data-base-price="3200">
+            <h2>Худи с капюшоном</h2>
+            <img src="https://via.placeholder.com/300x300/87CEEB/000000?text=Hoodie" alt="Худи">
+            <p class="description">Тёплое, на флисе</p>
+
+            <div class="size-selector">
+                <label>Размер:</label>
+                <button class="size-btn" data-price-mod="0" data-size="M">M (+0₽)</button>
+                <button class="size-btn active" data-price-mod="200" data-size="L">L (+200₽)</button>
+                <button class="size-btn" data-price-mod="400" data-size="XL">XL (+400₽)</button>
+            </div>
+
+            <p class="price">Цена: <span id="price2">3200</span>₽</p>
+        </div>
+
+        <div class="contact-form">
+            <h3>Ваши контактные данные в Telegram</h3>
+            <p>Чтобы продавец мог с вами связаться</p>
+            <input type="text" id="contactInput" placeholder="Ваш @username или номер телефона" required>
+            <!-- Кнопка отправки данных обратно в бота -->
+            <button id="submitBtn">📨 Отправить заявку продавцу</button>
+        </div>
+    </div>
+
+    <!-- Подключаем наш JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
