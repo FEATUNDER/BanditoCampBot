@@ -4,7 +4,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, WebAppI
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
 
 # Вставляем сюда ТОКЕН, который мы получили от BotFather
-BOT_TOKEN = "8450460586:AAFXV-qRVEm0-MYt93R9SZwjBPpCEtDv8N0"  # <-- ПОДСТАВЬ СВОЙ!
+BOT_TOKEN = ""  # <-- ПОДСТАВЬ СВОЙ!
 
 # 1. Функция приветствия. Срабатывает на команду /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -55,4 +55,5 @@ def main():
 
 # Это точка входа. Если мы запускаем этот файл напрямую, выполнится main()
 if __name__ == '__main__':
+
     main()
