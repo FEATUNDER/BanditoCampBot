@@ -10,7 +10,7 @@ BOT_TOKEN = "8450460586:AAFXV-qRVEm0-MYt93R9SZwjBPpCEtDv8N0"  # <-- ПОДСТА
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Создаем кнопку, которая будет открывать наше мини-приложение
     keyboard = [
-        [InlineKeyboardButton("🛍️ Открыть каталог", web_app=WebAppInfo(url="https://featunder.github.io/featunder.github.io./"))]
+        [InlineKeyboardButton("🛍️ Открыть каталог", web_app=WebAppInfo(url="https://bandito-camp-bot.vercel.app"))]
         # ПРИМЕЧАНИЕ: Ссылку мы заменим позже, после загрузки приложения на хостинг.
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -57,5 +57,6 @@ def main():
 if __name__ == '__main__':
 
     main()
+
 
 
