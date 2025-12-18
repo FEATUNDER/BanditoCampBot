@@ -15,9 +15,14 @@ document.querySelectorAll('.size-btn').forEach(button => {
         const totalPrice = basePrice + priceMod;
 
         // Обновляем отображение цены для этого товара
-        // (находим span с ценой внутри того же product)
         const priceSpan = product.querySelector('.price span');
         priceSpan.textContent = totalPrice;
+        
+        // Помечаем товар как выбранный (добавляем атрибут)
+        document.querySelectorAll('.product').forEach(p => {
+            p.removeAttribute('data-selected');
+        });
+        product.setAttribute('data-selected', 'true');
     });
 });
 
@@ -30,8 +35,14 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         return;
     }
 
-    // Собираем данные выбранного товара (берем первый, для примера логики)
-    const activeProduct = document.querySelector('.product');
+    // Ищем товар, у которого выбран размер (имеет data-selected="true")
+    const activeProduct = document.querySelector('.product[data-selected="true"]');
+    
+    if (!activeProduct) {
+        alert('Пожалуйста, выберите размер товара, кликнув на один из вариантов размера.');
+        return;
+    }
+
     const itemName = activeProduct.dataset.item;
     const selectedSize = activeProduct.querySelector('.size-btn.active').dataset.size;
     const finalPrice = activeProduct.querySelector('.price span').textContent;
@@ -42,13 +53,20 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         size: selectedSize,
         price: finalPrice + '₽',
         contact: contactInfo,
-        user_id: window.Telegram.WebApp.initDataUnsafe.user?.id // ID пользователя в Telegram (если доступен)
+        user_id: window.Telegram.WebApp.initDataUnsafe.user?.id
     };
 
+    console.log("Отправляемые данные:", orderData); // Для отладки в консоли браузера
+    
     // Отправляем данные обратно в бота
-    // Telegram.WebApp.sendData() – это специальная функция, которая передает строку в родительского бота
     window.Telegram.WebApp.sendData(JSON.stringify(orderData));
-
-    // Закрываем веб-приложение
-    window.Telegram.WebApp.close();
+    
+    // Показываем пользователю, что данные отправляются
+    this.textContent = "Отправляется...";
+    this.disabled = true;
+    
+    // Закрываем веб-приложение через небольшую задержку
+    setTimeout(() => {
+        window.Telegram.WebApp.close();
+    }, 500);
 });
